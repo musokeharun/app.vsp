@@ -1,14 +1,20 @@
 {
   "expo": {
-    "name": "app.vsp",
-    "slug": "app.vsp",
+    "name": "VSP Media",
+    "slug": "VSP-Media-Entertainment",
     "version": "1.0.0",
+    "privacy": "public",
+    "primaryColor": "#0B0F2F",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0B0F2F"
+    },
+    "description": "The right place to watch and download all sorts of movies at your convenience.",
+    "notification": {
+      "iosDisplayInForeground": true
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,16 +23,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vsp.media.app",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.vsp.media.app",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#0B0F2F"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.ico"
     }
   }
 }

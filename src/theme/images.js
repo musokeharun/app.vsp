@@ -9,8 +9,8 @@ export const svgs = {
 
 // png/jpeg
 export const images = {
-    logo_sm: require('../../assets/images/icon-y.png'),
-    logo_lg: require('../../assets/images/icon-y.png'),
+    logo_sm: require('../../assets/images/icon.png'),
+    logo_lg: require('../../assets/images/icon.png'),
 }
 
 // image preloading

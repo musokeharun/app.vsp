@@ -1,9 +1,9 @@
 import React from "react";
-import {ImageBackground, StyleSheet, View, Image, Text} from "react-native";
-
+import {StyleSheet, View, Image, Text} from "react-native";
 import Button from "../../components/Button";
 import routes from "../../routes/navigation/routes";
 import {colors, images} from "../../theme";
+import tailwind from "tailwind-rn";
 
 function WelcomeScreen({navigation}) {
     return (
@@ -13,17 +13,21 @@ function WelcomeScreen({navigation}) {
         >
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={images.logo_sm}/>
-                <Text style={styles.tagline}>Sell What You Don't Need</Text>
+                <Text style={{...styles.tagline, ...tailwind('px-3 items-center')}}>Watch a new movie much easier than
+                    any before</Text>
             </View>
             <View style={styles.buttonsContainer}>
                 <Button
-                    title="Login"
-                    onPress={() => navigation.navigate(routes.LOGIN)}
-                />
-                <Button
-                    title="Register"
+                    title="Get Started"
                     color="secondary"
                     onPress={() => navigation.navigate(routes.REGISTER)}
+                    backgroundColor={colors.primaryText}
+                />
+                <Button
+                    title="Already have an account?Sign in"
+                    color={colors.lightGrayPurple}
+                    textStyle={tailwind("text-center normal-case")}
+                    onPress={() => navigation.navigate(routes.LOGIN)}
                 />
             </View>
         </View>
@@ -54,6 +58,8 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: "600",
         paddingVertical: 20,
+        color: colors.white,
+        textAlign: "center",
     },
 });
 

@@ -1,12 +1,23 @@
 import React from "react";
-import { useFormikContext } from "formik";
+import {useFormikContext} from "formik";
+import {Button} from "react-native-elements";
+import {colors} from "../../theme";
+import tailwind from "tailwind-react-native-classnames";
 
-import Button from "../Button";
+function SubmitButton({title}) {
+    const {handleSubmit} = useFormikContext();
 
-function SubmitButton({ title }) {
-  const { handleSubmit } = useFormikContext();
-
-  return <Button title={title} onPress={handleSubmit} />;
+    return <Button
+        buttonStyle={{
+            backgroundColor: colors.lightText,
+            ...tailwind`py-4 px-8 rounded-xl`
+        }}
+        titleStyle={{
+            color: colors.white,
+            ...tailwind`text-center`
+        }}
+        title={title} onPress={handleSubmit}
+    />;
 }
 
 export default SubmitButton;

@@ -1,9 +1,9 @@
 import React from "react";
 import {StyleSheet, View, Image, Text} from "react-native";
-import Button from "../../components/Button";
+import {Button} from "react-native-elements";
 import routes from "../../routes/navigation/routes";
 import {colors, images} from "../../theme";
-import tailwind from "tailwind-rn";
+import tailwind from "tailwind-react-native-classnames";
 
 function WelcomeScreen({navigation}) {
     return (
@@ -13,20 +13,30 @@ function WelcomeScreen({navigation}) {
         >
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={images.logo_sm}/>
-                <Text style={{...styles.tagline, ...tailwind('px-3 items-center')}}>Watch a new movie much easier than
-                    any before</Text>
+                <Text style={tailwind`px-3 mt-5 items-center font-extrabold text-white text-center text-2xl`}>
+                    Access and Watch movies much easier than any before
+                </Text>
             </View>
             <View style={styles.buttonsContainer}>
                 <Button
+                    buttonStyle={{
+                        backgroundColor: colors.lightText,
+                        ...tailwind`py-4 px-8 mx-4 rounded-xl`
+                    }}
+                    titleStyle={{
+                        color: colors.white,
+                        ...tailwind`text-center`
+                    }}
                     title="Get Started"
-                    color="secondary"
                     onPress={() => navigation.navigate(routes.REGISTER)}
-                    backgroundColor={colors.primaryText}
                 />
                 <Button
-                    title="Already have an account?Sign in"
-                    color={colors.lightGrayPurple}
-                    textStyle={tailwind("text-center normal-case")}
+                    title="Already have an account? Sign in"
+                    titleStyle={{
+                        color: colors.lightGrayPurple
+                    }}
+                    buttonStyle={tailwind`bg-transparent py-4 my-4`}
+                    textStyle={tailwind`text-center normal-case`}
                     onPress={() => navigation.navigate(routes.LOGIN)}
                 />
             </View>
@@ -46,20 +56,13 @@ const styles = StyleSheet.create({
         width: "100%",
     },
     logo: {
-        width: 100,
-        height: 100,
+        width: 200,
+        height: 150,
     },
     logoContainer: {
         position: "absolute",
-        top: 70,
+        top: 30,
         alignItems: "center",
-    },
-    tagline: {
-        fontSize: 25,
-        fontWeight: "600",
-        paddingVertical: 20,
-        color: colors.white,
-        textAlign: "center",
     },
 });
 

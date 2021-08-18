@@ -1,5 +1,6 @@
 import React, {useState} from "react";
-import {StyleSheet, Image} from "react-native";
+import {StyleSheet, Image, Text, View} from "react-native";
+import tailwind from "tailwind-react-native-classnames";
 import * as Yup from "yup";
 
 import Screen from "../../components/Screen";
@@ -13,6 +14,10 @@ import {
 import useAuth from "../../auth/useAuth";
 import {authenticate} from "../../slices/app.slice";
 import {images} from "../../theme";
+import tw from "tailwind-react-native-classnames";
+import {Button} from "react-native-elements";
+import {navigate} from "../../routes/navigation/navigate";
+import routes from "../../routes/navigation/routes";
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -22,7 +27,6 @@ const validationSchema = Yup.object().shape({
 function LoginScreen(props) {
     const auth = useAuth();
     const [loginFailed, setLoginFailed] = useState(false);
-
     const handleSubmit = async ({email, password}) => {
 
         authenticate({checked: true, loggedIn: true})
@@ -32,11 +36,16 @@ function LoginScreen(props) {
         // setLoginFailed(false);
         // auth.logIn(result.data);
     };
+    const forgotPassword = () => {
+        navigate(routes.FORGOT_PASSWORD);
+    }
 
     return (
         <Screen style={styles.container}>
             <Image style={styles.logo} source={images.logo_sm}/>
-
+            <Text style={tailwind`px-3 items-center font-extrabold text-white text-left text-2xl`}>
+                Welcome Back
+            </Text>
             <Form
                 initialValues={{email: "", password: ""}}
                 onSubmit={handleSubmit}
@@ -64,7 +73,14 @@ function LoginScreen(props) {
                     secureTextEntry
                     textContentType="password"
                 />
-                <SubmitButton title="Login"/>
+                <Button
+                    titleStyle={tw`text-red-200 text-right font-thin`}
+                    buttonStyle={tw`bg-transparent flex-row justify-end`}
+                    title={"Forgot Password?"}
+                />
+                <View style={tw`mt-6 flex-1`}>
+                    <SubmitButton title="Login"/>
+                </View>
             </Form>
         </Screen>
     );
@@ -75,9 +91,9 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     logo: {
-        width: 80,
-        height: 80,
-        alignSelf: "center",
+        width: 100,
+        height: 100,
+        alignSelf: "flex-start",
         marginTop: 50,
         marginBottom: 20,
     },

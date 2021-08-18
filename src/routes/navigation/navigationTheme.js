@@ -5,7 +5,7 @@ const navigationTheme = {
     ...DefaultTheme,
     colors: {
         ...DefaultTheme.colors,
-        primary: colors.gray,
+        primary: colors.primaryText,
         background: colors.primaryDark,
     },
 };

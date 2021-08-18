@@ -1,12 +1,14 @@
 import React from "react";
 import LottieView from "lottie-react-native";
 import {View, StyleSheet} from "react-native";
+import {StatusBar} from "expo-status-bar";
 
 function ActivityIndicator({visible = false}) {
     if (!visible) return null;
 
     return (
         <View style={styles.overlay}>
+            <StatusBar style={"auto"}/>
             <LottieView
                 autoPlay
                 loop

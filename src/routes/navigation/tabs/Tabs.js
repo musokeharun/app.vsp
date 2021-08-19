@@ -6,6 +6,7 @@ import {colors} from '../../../theme'
 
 // stack navigators
 import {HomeNavigator, ProfileNavigator} from '../stacks'
+import tw from "tailwind-react-native-classnames";
 
 const Tab = createBottomTabNavigator()
 
@@ -22,6 +23,7 @@ const TabNavigator = () => (
                                 color={focused ? colors.lightText : colors.gray}
                                 size={20}
                                 solid
+                                style={tw`px-3`}
                             />
                         )
                     case 'Profile':
@@ -31,6 +33,7 @@ const TabNavigator = () => (
                                 color={focused ? colors.lightText : colors.gray}
                                 size={20}
                                 solid
+                                style={tw`px-3`}
                             />
                         )
                     default:
@@ -43,15 +46,20 @@ const TabNavigator = () => (
             activeTintColor: colors.lightText,
             inactiveTintColor: colors.gray,
             style: {
-                // backgroundColor: 'white',
-                // borderTopColor: 'gray',
-                // borderTopWidth: 1,
-                // paddingBottom: 5,
-                // paddingTop: 5,
+                position: "absolute",
+                backgroundColor: '#00000000',
+                borderTopColor: 'gray',
+                borderTopWidth: 1,
+                paddingBottom: 5,
+                paddingTop: 5,
+                elevation: 0,
+                height: 60
             },
+            tabBarShowLabel: false,
+            showLabel : false
         }}
         initialRouteName="Home"
-        swipeEnabled={true}
+        swipeEnabled={false}
     >
         <Tab.Screen name="Home" component={HomeNavigator}/>
         <Tab.Screen name="Profile" component={ProfileNavigator}/>

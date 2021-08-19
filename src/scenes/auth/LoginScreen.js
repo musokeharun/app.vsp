@@ -18,6 +18,7 @@ import tw from "tailwind-react-native-classnames";
 import {Button} from "react-native-elements";
 import {navigate} from "../../routes/navigation/navigate";
 import routes from "../../routes/navigation/routes";
+import {useDispatch} from "react-redux";
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required().email().label("Email"),
@@ -26,10 +27,11 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen(props) {
     const auth = useAuth();
+    const dispatch = useDispatch();
     const [loginFailed, setLoginFailed] = useState(false);
     const handleSubmit = async ({email, password}) => {
 
-        authenticate({checked: true, loggedIn: true})
+        dispatch(authenticate({checked: true, loggedIn: true}));
         return;
         // const result = await authApi.login(email, password);
         // if (!result.ok) return setLoginFailed(true);

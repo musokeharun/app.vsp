@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, ScrollView, Text, View} from "react-native";
+import {FlatList, ScrollView, Text, TouchableWithoutFeedback, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import tailwind from "tailwind-react-native-classnames";
 import Screen from "../../components/Screen";
@@ -7,8 +7,11 @@ import CheckButton from "../../components/CheckButton";
 import {Button} from "react-native-elements";
 import Icon from "../../components/Icon";
 import {colors} from "../../theme";
+import {useDispatch} from "react-redux";
+import {authenticate} from "../../slices/app.slice";
 
 const CategorySelectorScreen = () => {
+    const dispatch = useDispatch();
 
     const categories = [
         {
@@ -42,6 +45,9 @@ const CategorySelectorScreen = () => {
                      value={item.value}/>
     </View>;
 
+    const handleSubmit = () => {
+        dispatch(authenticate({loggedIn: true}))
+    }
     return (
         <Screen style={tw`flex-1`}>
             <ScrollView style={tw`flex-1`}>
@@ -70,11 +76,18 @@ const CategorySelectorScreen = () => {
                                   style={tailwind`px-3 items-center font-black text-white text-left text-2xl w-2/3 py-3`}>
                                   Select Your Favourite Genre
                               </Text>)}
-                          ListFooterComponent={() => (<Button
-                              buttonStyle={tw`self-center rounded-full my-5`}
-                              icon={<Icon name={"arrow-right"} size={56} backgroundColor={colors.transparent}
-                                          iconColor={colors.white}/>}
-                          />)}
+                          ListFooterComponent={() => (
+                              <Button
+                                  onPress={handleSubmit}
+                                  buttonStyle={tw`self-center rounded-full my-5`}
+                                  icon={
+                                      <Icon
+                                          name={"arrow-right"}
+                                          size={56}
+                                          backgroundColor={colors.transparent}
+                                          iconColor={colors.white}/>
+                                  }
+                              />)}
                           keyExtractor={item => item.value}/>
             </ScrollView>
         </Screen>

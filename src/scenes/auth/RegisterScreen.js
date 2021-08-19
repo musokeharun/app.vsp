@@ -34,7 +34,7 @@ function RegisterScreen() {
 
     const handleSubmit = async (userInfo) => {
 
-        navigate(routes.CATEGORY_SELECT);
+        navigate(routes.CONFIRM_ACCOUNT);
         return;
 
         const result = await registerApi.request(userInfo);

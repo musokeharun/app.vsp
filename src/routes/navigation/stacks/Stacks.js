@@ -5,6 +5,7 @@ import Home from '../../../scenes/home'
 import Profile from '../../../scenes/profile'
 import Details from '../../../scenes/details'
 import HeaderTitle from './HeaderTitle'
+import routes from "../routes";
 
 // ---------
 // ---------------------------
@@ -15,7 +16,7 @@ const Stack = createStackNavigator()
 
 const navigationProps = {
     headerTintColor: 'white',
-    headerStyle: {backgroundColor: colors.primaryDark , elevation :0},
+    headerStyle: {backgroundColor: colors.primaryDark, elevation: 0},
     headerTitleStyle: {fontSize: 18},
     headerMode: "screen",
 }
@@ -26,22 +27,21 @@ const navigationProps = {
 
 export const HomeNavigator = () => (
     <Stack.Navigator
-        initialRouteName="HomeScene"
+        initialRouteName={"HomeScene"}
         screenOptions={navigationProps}
     >
         <Stack.Screen
-            name="HomeScene"
+            name={"HomeScene"}
             component={Home}
             options={({navigation}) => ({
-                title : false,
+                title: false,
                 headerTitle: () => <HeaderTitle/>,
             })}
         />
         <Stack.Screen
-            name="HomeDetails"
+            name={"HomeDetails"}
             component={Details}
             options={({navigation}) => ({
-                title: 'HomeDetails',
                 headerLeft: () => <HeaderTitle/>,
                 headerTitle: false
             })}

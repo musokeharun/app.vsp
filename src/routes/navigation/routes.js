@@ -6,5 +6,11 @@ export default Object.freeze({
     REGISTER: "Register",
     FORGOT_PASSWORD: "FORGOT_PASSWORD",
     CATEGORY_SELECT: "CategorySelect",
-    CONFIRM_ACCOUNT: "ConfirmAccount"
+    CONFIRM_ACCOUNT: "ConfirmAccount",
+    HomeScene: "HomeScene",
+    HomeDetails: "HomeDetails",
+    TabSearch: "TAB_SEARCH",
+    TabHome: "TAB_HOME",
+    TabLibrary: "TAB_LIBRARY",
+    TabProfile: "TAB_PROFILE",
 });

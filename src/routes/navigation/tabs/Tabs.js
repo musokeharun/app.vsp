@@ -20,31 +20,31 @@ const AppNavigator = () => (
             tabBarInactiveBackgroundColor: colors.primaryDark,
             tabBarActiveBackgroundColor: colors.primaryDark,
         })}
-        initialRouteName="Home"
+        initialRouteName={"TAB_SEARCH"}
         swipeEnabled={false}
     >
         <Tab.Screen
-            name="Home"
+            name={"TAB_HOME"}
             component={HomeNavigator} options={{
             tabBarIcon: ({color, size}) => <FontIcon name={"home"} size={size} color={color}/>
         }}
         />
         <Tab.Screen
-            name="Search"
+            name={"TAB_SEARCH"}
             component={SearchScreen}
             options={{
-                tabBarIcon: ({color, size}) => <FontIcon name={"search"} size={size} color={color}/>
+                tabBarIcon: ({color, size}) => <FontIcon name={"search"} size={size} color={color}/>,
             }}
         />
         <Tab.Screen
-            name="Library"
+            name={"TAB_LIBRARY"}
             component={LibraryScene}
             options={{
                 tabBarIcon: ({color, size}) => <FontIcon name={"folder"} size={size} color={color}/>
             }}
         />
         <Tab.Screen
-            name="Profile"
+            name={"TAB_PROFILE"}
             component={ProfileNavigator}
             options={{
                 tabBarIcon: ({color, size}) => <FontIcon name={"user-tie"} size={size} color={color}/>

@@ -1,69 +1,56 @@
 import React from 'react'
-import {View} from 'react-native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import FontIcon from 'react-native-vector-icons/FontAwesome5'
 import {colors} from '../../../theme'
-
-// stack navigators
 import {HomeNavigator, ProfileNavigator} from '../stacks'
 import tw from "tailwind-react-native-classnames";
+import LibraryScene from "../../../scenes/library";
+import SearchScreen from "../../../scenes/search";
 
 const Tab = createBottomTabNavigator()
 
-const TabNavigator = () => (
+const AppNavigator = () => (
     <Tab.Navigator
         screenOptions={({route}) => ({
-            // eslint-disable-next-line react/prop-types
-            tabBarIcon: ({focused}) => {
-                switch (route.name) {
-                    case 'Home':
-                        return (
-                            <FontIcon
-                                name="home"
-                                color={focused ? colors.lightText : colors.gray}
-                                size={20}
-                                solid
-                                style={tw`px-3`}
-                            />
-                        )
-                    case 'Profile':
-                        return (
-                            <FontIcon
-                                name="user"
-                                color={focused ? colors.lightText : colors.gray}
-                                size={20}
-                                solid
-                                style={tw`px-3`}
-                            />
-                        )
-                    default:
-                        return <View/>
-                }
-            },
-            headerShown: false
-        })}
-        tabBarOptions={{
-            activeTintColor: colors.lightText,
-            inactiveTintColor: colors.gray,
-            style: {
-                position: "absolute",
-                backgroundColor: '#00000000',
-                borderTopColor: 'gray',
-                borderTopWidth: 1,
-                paddingBottom: 5,
-                paddingTop: 5,
-                elevation: 0,
-                height: 60
-            },
+            headerShown: false,
+            tabBarActiveTintColor: colors.lightText,
             tabBarShowLabel: false,
-            showLabel : false
-        }}
+            tabBarStyle: [tw`m-0 border-0`, {elevation: 0}],
+            tabBarInactiveTintColor: colors.white,
+            tabBarInactiveBackgroundColor: colors.primaryDark,
+            tabBarActiveBackgroundColor: colors.primaryDark,
+        })}
         initialRouteName="Home"
         swipeEnabled={false}
     >
-        <Tab.Screen name="Home" component={HomeNavigator}/>
-        <Tab.Screen name="Profile" component={ProfileNavigator}/>
+        <Tab.Screen
+            name="Home"
+            component={HomeNavigator} options={{
+            tabBarIcon: ({color, size}) => <FontIcon name={"home"} size={size} color={color}/>
+        }}
+        />
+        <Tab.Screen
+            name="Search"
+            component={SearchScreen}
+            options={{
+                tabBarIcon: ({color, size}) => <FontIcon name={"search"} size={size} color={color}/>
+            }}
+        />
+        <Tab.Screen
+            name="Library"
+            component={LibraryScene}
+            options={{
+                tabBarIcon: ({color, size}) => <FontIcon name={"folder"} size={size} color={color}/>
+            }}
+        />
+        <Tab.Screen
+            name="Profile"
+            component={ProfileNavigator}
+            options={{
+                tabBarIcon: ({color, size}) => <FontIcon name={"user-tie"} size={size} color={color}/>
+            }}
+        />
     </Tab.Navigator>
 )
 
-export default TabNavigator
+export default AppNavigator

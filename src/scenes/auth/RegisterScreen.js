@@ -3,7 +3,7 @@ import {Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text} fro
 import * as Yup from "yup";
 import tailwind from "tailwind-react-native-classnames";
 
-import Screen from "../../components/Screen";
+import Screen from "../../components/common/Screen";
 import usersApi from "../../api/users";
 import authApi from "../../api/auth";
 import useAuth from "../../auth/useAuth";
@@ -14,7 +14,7 @@ import {
     SubmitButton,
 } from "../../components/forms";
 import useApi from "../../hooks/useApi";
-import ActivityIndicator from "../../components/ActivityIndicator";
+import ActivityIndicator from "../../components/common/ActivityIndicator";
 import {images} from "../../theme";
 import tw from "tailwind-react-native-classnames";
 import {navigate} from "../../routes/navigation/navigate";

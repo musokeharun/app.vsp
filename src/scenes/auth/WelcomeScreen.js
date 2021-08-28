@@ -1,19 +1,24 @@
 import React from "react";
-import {StyleSheet, View, Image, Text} from "react-native";
+import {StyleSheet, View, Image, Text, ImageBackground} from "react-native";
 import {Button} from "react-native-elements";
 import routes from "../../routes/navigation/routes";
 import {colors, images} from "../../theme";
 import tailwind from "tailwind-react-native-classnames";
 
 function WelcomeScreen({navigation}) {
+
+    const img = {uri: "https://wallpaperaccess.com/full/833312.png"};
+
     return (
-        <View
-            blurRadius={10}
+        <ImageBackground
+            blurRadius={6}
             style={styles.background}
+            source={img}
+            resizeMode={"contain"}
         >
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={images.logo_sm}/>
-                <Text style={tailwind`px-3 mt-5 items-center font-extrabold text-white text-center text-2xl`}>
+                <Text style={tailwind`px-3 mt-5 items-center font-extrabold text-white text-center text-xl`}>
                     Access and Watch movies much easier than any before
                 </Text>
             </View>
@@ -40,7 +45,7 @@ function WelcomeScreen({navigation}) {
                     onPress={() => navigation.navigate(routes.LOGIN)}
                 />
             </View>
-        </View>
+        </ImageBackground>
     );
 }
 

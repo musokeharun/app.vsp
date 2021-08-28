@@ -1,48 +1,38 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
-import {
-  StyleSheet, Text, View, StatusBar,
-} from 'react-native'
-import Button from '../../components/Button'
-import { colors } from '../../theme'
+import {colors} from '../../theme'
+import tw from "tailwind-react-native-classnames";
+import CategoryList from "../../components/home/CategoryList";
+import Banner from "../../components/home/Banner";
+import {KeyboardAvoidingView, StatusBar, View} from "react-native";
+import CategoryContainer from "../../components/home/CategoryContainer";
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.lightGrayPurple,
-  },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-})
+const Home = ({navigation}) => {
 
-const Home = ({ navigation }) => (
-  <View style={styles.root}>
-    <StatusBar barStyle="light-content" />
-    <Text style={styles.title}>Home</Text>
-    <Button
-      title="Go to Details"
-      color="white"
-      backgroundColor={colors.lightText}
-      onPress={() => {
-        navigation.navigate('Details', { from: 'Home' })
-      }}
-    />
-  </View>
-)
+    const [selectedCategory, setSelectedCategory] = useState("")
+
+    return (
+        <KeyboardAvoidingView style={[{backgroundColor: colors.primaryDark}]}>
+            <StatusBar barStyle={"light-content"} backgroundColor={colors.primaryDark}/>
+            <View style={tw`w-full py-0 mb-0`}>
+                <CategoryList selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
+            </View>
+            <Banner/>
+            <CategoryContainer
+                title={"New Releases"}
+            />
+        </KeyboardAvoidingView>
+    )
+}
 
 Home.propTypes = {
-  navigation: PropTypes.shape({
-    navigate: PropTypes.func,
-  }),
+    navigation: PropTypes.shape({
+        navigate: PropTypes.func,
+    }),
 }
 
 Home.defaultProps = {
-  navigation: { navigate: () => null },
+    navigation: {navigate: () => null},
 }
 
 export default Home

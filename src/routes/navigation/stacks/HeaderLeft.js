@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
 const HeaderLeft = ({ navigation }) => (
   <FontIcon.Button
-    name="bars"
+    name="arrow-left"
     color="white"
     backgroundColor="transparent"
     onPress={() => {

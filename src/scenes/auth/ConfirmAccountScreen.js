@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Screen from "../../components/Screen";
+import Screen from "../../components/common/Screen";
 import tw from "tailwind-react-native-classnames";
 import tailwind from "tailwind-react-native-classnames";
 import {Image, StyleSheet, Text, View} from "react-native";

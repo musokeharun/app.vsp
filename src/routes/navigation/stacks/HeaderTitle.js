@@ -1,15 +1,16 @@
 import React from 'react'
-import { StyleSheet, Image } from 'react-native'
-import { images } from '../../../theme'
+import {StyleSheet, Image} from 'react-native'
+import {images} from '../../../theme'
+import Constants from "expo-constants";
 
 const styles = StyleSheet.create({
-  logo: {
-    width: 32,
-    height: 32,
-  },
+    logo: {
+        width: 72,
+        height: Constants.statusBarHeight,
+    },
 })
 
-const HeaderTitle = () => <Image source={images.logo_sm} style={styles.logo} />
+const HeaderTitle = () => <Image source={images.in_app} style={styles.logo}/>
 
 HeaderTitle.propTypes = {}
 HeaderTitle.defaultProps = {}

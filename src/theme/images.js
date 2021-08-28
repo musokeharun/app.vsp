@@ -11,7 +11,8 @@ export const svgs = {
 export const images = {
     logo_sm: require('../../assets/images/icon.png'),
     logo_lg: require('../../assets/images/icon.png'),
-    account: require('../../assets/images/account.png')
+    account: require('../../assets/images/account.png'),
+    in_app :  require('../../assets/images/in_app.png')
 }
 
 // image preloading

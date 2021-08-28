@@ -3,7 +3,7 @@ import {StyleSheet, Image, Text, View} from "react-native";
 import tailwind from "tailwind-react-native-classnames";
 import * as Yup from "yup";
 
-import Screen from "../../components/Screen";
+import Screen from "../../components/common/Screen";
 import {
     ErrorMessage,
     Form,

@@ -10,9 +10,9 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Text from "./Text";
-import defaultStyles from "../config/styles";
+import defaultStyles from "../../config/styles";
 import PickerItem from "./PickerItem";
-import Screen from "./Screen";
+import Screen from "../common/Screen";
 
 function AppPicker({
   icon,

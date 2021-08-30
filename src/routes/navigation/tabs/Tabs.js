@@ -8,7 +8,6 @@ import LibraryScene from "../../../scenes/library";
 import SearchScreen from "../../../scenes/search";
 import {createMaterialTopTabNavigator} from "@react-navigation/material-top-tabs";
 import Screen from "../../../components/common/Screen";
-import HeaderTitle from "../stacks/HeaderTitle";
 import HeaderTitleText from "../stacks/HeaderTitleText";
 import {View} from "react-native";
 
@@ -22,7 +21,7 @@ export const LibraryTopBar = () => {
                 initialRouteName={"LibraryList"}
                 backBehavior={"none"}
                 screenOptions={{
-                    tabBarStyle: [tw`justify-center py-0`, {backgroundColor: colors.white}],
+                    tabBarStyle: [tw`justify-center py-0 my-0 `, {backgroundColor: colors.primaryDark}],
                     tabBarLabelStyle: tw`text-white normal-case`,
                     tabBarItemStyle: {width: 100},
                     tabBarIndicatorStyle: tw`mx-3`,
@@ -53,7 +52,7 @@ const AppNavigator = () => (
             tabBarInactiveBackgroundColor: colors.primaryDark,
             tabBarActiveBackgroundColor: colors.primaryDark,
         })}
-        initialRouteName={"TAB_SEARCH"}
+        initialRouteName={"TAB_LIBRARY"}
         swipeEnabled={false}
     >
         <Tab.Screen

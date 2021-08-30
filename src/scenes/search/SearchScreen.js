@@ -3,11 +3,9 @@ import tw from "tailwind-react-native-classnames";
 import Screen from "../../components/common/Screen";
 import HeaderTitleText from "../../routes/navigation/stacks/HeaderTitleText";
 import {SearchBar, Text} from "react-native-elements";
-import {colors} from "../../theme";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {ScrollView} from "react-native";
 import SearchCard from "../../components/Cards/SearchCard";
-import SearchPlaceHolder from "../../components/search/SearchPlaceholder";
+import PlaceholderScreen from "../../components/all/PlaceholderScreen";
 
 const SearchScreen = () => {
         const [query, setQuery] = useState("");
@@ -30,7 +28,9 @@ const SearchScreen = () => {
                 </Text>
                 {/*TODO DEV MODEL CHANGE TO RESULTS NOT TEXT*/}
                 {!query.length ?
-                    <SearchPlaceHolder/> :
+                    <PlaceholderScreen image={require("../../../assets/animations/search.json")}
+                                       title={"Search any Movie"}
+                                       subTitle={"Explore our libraries and enjoy the content filtered to your needs"}/> :
                     <ScrollView>
                         <SearchCard/>
                     </ScrollView>

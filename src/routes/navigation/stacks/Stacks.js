@@ -6,6 +6,7 @@ import Profile from '../../../scenes/profile'
 import Details from '../../../scenes/details'
 import HeaderTitle from './HeaderTitle'
 import routes from "../routes";
+import HeaderTitleText from "./HeaderTitleText";
 
 // ---------
 // ---------------------------
@@ -55,11 +56,11 @@ export const ProfileNavigator = () => (
         screenOptions={navigationProps}
     >
         <Stack.Screen
-            name="Profile"
+            name="ProfileScene"
             component={Profile}
             options={({navigation}) => ({
-                title: 'ProfileScene',
-                headerTitle: () => <HeaderTitle/>,
+                headerTitle: () => <HeaderTitleText title={"Account"}/>,
+                headerLeft: false
             })}
         />
         <Stack.Screen

@@ -5,7 +5,7 @@ import {colors} from "../../../theme";
 
 const HeaderTitleText = ({title,style}) => {
     return (
-        <Text h4 style={[tw`text-white font-normal bg-white px-3`, {backgroundColor: colors.primaryDark},style]}>
+        <Text h4 style={[tw`text-white font-normal bg-white px-2`, {backgroundColor: colors.primaryDark},style]}>
             {title}
         </Text>
     );

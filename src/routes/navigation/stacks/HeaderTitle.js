@@ -5,7 +5,7 @@ import Constants from "expo-constants";
 
 const styles = StyleSheet.create({
     logo: {
-        width: 72,
+        width: 85,
         height: Constants.statusBarHeight,
     },
 })

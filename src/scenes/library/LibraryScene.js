@@ -17,7 +17,8 @@ const LibraryScene = () => {
                             btnTitle={"Explore Movies"}
                             handleBtnPress={() => setList(list.concat({h: 1}))}
                             subTitle={"Add a few movies, genres or categories to feature on you list."}
-                            image={require("../../../assets/animations/library.json")}/>
+                            image={require("../../../assets/animations/library.json")}
+                        />
                 }
             </View>
         );

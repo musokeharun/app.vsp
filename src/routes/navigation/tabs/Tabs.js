@@ -25,7 +25,7 @@ export const LibraryTopBar = () => {
                     tabBarLabelStyle: tw`text-white normal-case`,
                     tabBarItemStyle: {width: 100},
                     tabBarIndicatorStyle: tw`mx-3`,
-                    tabBarContentContainerStyle : tw`my-0 py-0`
+                    tabBarContentContainerStyle: tw`my-0 py-0`
                 }}
             >
                 <TopTab.Screen options={{
@@ -52,7 +52,7 @@ const AppNavigator = () => (
             tabBarInactiveBackgroundColor: colors.primaryDark,
             tabBarActiveBackgroundColor: colors.primaryDark,
         })}
-        initialRouteName={"TAB_LIBRARY"}
+        initialRouteName={"TAB_PROFILE"}
         swipeEnabled={false}
     >
         <Tab.Screen
@@ -84,7 +84,9 @@ const AppNavigator = () => (
             name={"TAB_PROFILE"}
             component={ProfileNavigator}
             options={{
-                tabBarIcon: ({color, size}) => <FontIcon name={"user-tie"} size={size} color={color}/>
+                tabBarIcon: ({color, size}) => <FontIcon name={"user-tie"} size={size} color={color}/>,
+                headerShown: false,
+                headerTitle : false
             }}
         />
     </Tab.Navigator>

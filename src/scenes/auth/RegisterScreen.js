@@ -2,11 +2,7 @@ import React, {useState} from "react";
 import {Image, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text} from "react-native";
 import * as Yup from "yup";
 import tailwind from "tailwind-react-native-classnames";
-
 import Screen from "../../components/common/Screen";
-import usersApi from "../../api/users";
-import authApi from "../../api/auth";
-import useAuth from "../../auth/useAuth";
 import {
     ErrorMessage,
     Form,
@@ -17,48 +13,53 @@ import useApi from "../../hooks/useApi";
 import ActivityIndicator from "../../components/common/ActivityIndicator";
 import {images} from "../../theme";
 import tw from "tailwind-react-native-classnames";
+import userApi from "../../api/users";
 import {navigate} from "../../routes/navigation/navigate";
 import routes from "../../routes/navigation/routes";
+import {Button} from "react-native-elements";
+import AuthStorage from "../../auth/storage";
+import logger from "../../utils/logger";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required().label("Name"),
-    email: Yup.string().required().email().label("Email"),
+    contact: Yup.string().min(9).required().label("Phone Number"),
     password: Yup.string().required().min(4).label("Password"),
 });
 
 function RegisterScreen() {
-    const registerApi = useApi(usersApi.register);
-    const loginApi = useApi(authApi.login);
-    const auth = useAuth();
+    const registerApi = useApi(userApi.register);
     const [error, setError] = useState();
+    const [info, setInfo] = useState();
 
-    const handleSubmit = async (userInfo) => {
+    const handleSubmit = async ({name, contact, password}) => {
 
-        navigate(routes.CONFIRM_ACCOUNT);
-        return;
-
-        const result = await registerApi.request(userInfo);
+        setInfo("");
+        setError("");
+        const result = await registerApi.request({name, contact, password});
 
         if (!result.ok) {
-            if (result.data) setError(result.data.error);
-            else {
+            if (result.data) {
+                setError(result.data.error || result.data.err);
+            } else {
                 setError("An unexpected error occurred.");
                 console.log(result);
             }
             return;
         }
+        // CACHE PHONE NUMBER
+        await AuthStorage.storeRegister({name, password, contact});
 
-        const {data: authToken} = await loginApi.request(
-            userInfo.email,
-            userInfo.password
-        );
-        auth.logIn(authToken);
+        logger.log(result.data, result.status);
+        setInfo(result.data.msg);
+        navigate(routes.CONFIRM_ACCOUNT, {
+            contact, name
+        });
     };
 
     return (
         <KeyboardAvoidingView style={tw`flex-1`} behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <ScrollView style={tw`flex-1`} showsVerticalScrollIndicator={false}>
-                <ActivityIndicator visible={registerApi.loading || loginApi.loading}/>
+                <ActivityIndicator visible={registerApi.loading}/>
                 <Screen style={styles.container}>
                     <Text style={tailwind`px-8 items-center font-extrabold text-white text-center text-2xl`}>
                         Create Your New Account.
@@ -70,6 +71,7 @@ function RegisterScreen() {
                         validationSchema={validationSchema}
                     >
                         <ErrorMessage error={error} visible={error}/>
+                        <ErrorMessage error={info} visible={info} style={tw`text-green-500`}/>
                         <FormField
                             autoCorrect={false}
                             icon="account"
@@ -79,11 +81,11 @@ function RegisterScreen() {
                         <FormField
                             autoCapitalize="none"
                             autoCorrect={false}
-                            icon="email"
-                            keyboardType="email-address"
-                            name="email"
-                            placeholder="Email"
-                            textContentType="emailAddress"
+                            icon="phone"
+                            keyboardType="phone-pad"
+                            name="contact"
+                            placeholder="Phone Number"
+                            textContentType="telephoneNumber"
                         />
                         <FormField
                             autoCapitalize="none"
@@ -95,6 +97,8 @@ function RegisterScreen() {
                             textContentType="password"
                         />
                         <SubmitButton title="Register"/>
+                        <Button onPress={e => navigate(routes.CONFIRM_ACCOUNT)} title={"Verify Account"}
+                                buttonStyle={tw`bg-transparent my-2`}/>
                     </Form>
                 </Screen>
             </ScrollView>

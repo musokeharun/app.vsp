@@ -4,17 +4,19 @@ import {Button} from "react-native-elements";
 import routes from "../../routes/navigation/routes";
 import {colors, images} from "../../theme";
 import tailwind from "tailwind-react-native-classnames";
+import {useSelector} from "react-redux";
+import {selectAssets} from "../../slices/app.slice";
 
 function WelcomeScreen({navigation}) {
 
-    const img = {uri: "https://wallpaperaccess.com/full/833312.png"};
+    const Assets = useSelector(selectAssets);
 
     return (
         <ImageBackground
             blurRadius={6}
             style={styles.background}
-            source={img}
-            resizeMode={"contain"}
+            source={Assets.AuthBg}
+            resizeMode={"cover"}
         >
             <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={images.logo_sm}/>
@@ -23,6 +25,15 @@ function WelcomeScreen({navigation}) {
                 </Text>
             </View>
             <View style={styles.buttonsContainer}>
+                <Button
+                    title="Login"
+                    titleStyle={{
+                        color: colors.lightGrayPurple
+                    }}
+                    buttonStyle={tailwind`py-4 my-4 mx-4 rounded-xl`}
+                    textStyle={tailwind`text-center normal-case`}
+                    onPress={() => navigation.navigate(routes.LOGIN)}
+                />
                 <Button
                     buttonStyle={{
                         backgroundColor: colors.lightText,
@@ -34,15 +45,6 @@ function WelcomeScreen({navigation}) {
                     }}
                     title="Get Started"
                     onPress={() => navigation.navigate(routes.REGISTER)}
-                />
-                <Button
-                    title="Already have an account? Sign in"
-                    titleStyle={{
-                        color: colors.lightGrayPurple
-                    }}
-                    buttonStyle={tailwind`bg-transparent py-4 my-4`}
-                    textStyle={tailwind`text-center normal-case`}
-                    onPress={() => navigation.navigate(routes.LOGIN)}
                 />
             </View>
         </ImageBackground>

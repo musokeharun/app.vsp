@@ -6,7 +6,8 @@ const colors = {
     gray: '#797777',
     lightGrayPurple: '#f7f7fb',
     white: "#fff",
-    transparent: "#00000000"
+    transparent: "#00000000",
+    black: "#000"
 }
 
 export default colors

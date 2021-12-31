@@ -1,3 +1,3 @@
-import Routes from './Routes'
+import Entrance from './Entrance'
 
-export default Routes
+export default Entrance

@@ -14,12 +14,12 @@ const HeaderAccount = () => {
                 backgroundColor: colors.primaryText
             }]}>
                 <Text h1 style={tw`font-bold`}>
-                    A
+                    U
                 </Text>
             </View>
             <View style={tw`justify-center text-center`}>
                 <Text style={tw`font-normal text-white text-lg`} numberOfLines={1}>
-                    Username Othername
+                    Username OtherName
                 </Text>
                 <Text style={tw`font-normal text-white text-base`}>
                     0772 567 987

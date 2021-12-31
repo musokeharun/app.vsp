@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import tw from "tailwind-react-native-classnames";
 import {View} from "react-native";
 import SearchCard from "../../components/Cards/SearchCard";
-import PlaceholderScreen from "../../components/all/PlaceholderScreen";
+import PlaceholderScreen from "../../components/common/PlaceholderScreen";
 
 const LibraryScene = () => {
 

@@ -9,4 +9,5 @@ const navigationTheme = {
         background: colors.primaryDark,
     },
 };
+
 export default navigationTheme;

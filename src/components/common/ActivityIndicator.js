@@ -5,7 +5,7 @@ import {StatusBar} from "expo-status-bar";
 import tw from "tailwind-react-native-classnames";
 
 function ActivityIndicator({visible = false, text = ""}) {
-    if (!visible) return null;
+    if (!visible) return <></>;
 
     return (
         <View style={styles.overlay}>

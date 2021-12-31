@@ -48,7 +48,6 @@
     "react-redux": "^7.2.4",
     "redux-logger": "^3.0.6",
     "tailwind-react-native-classnames": "^1.4.2",
-    "tailwind-rn": "^3.0.1",
     "yup": "^0.32.9"
   },
   "devDependencies": {

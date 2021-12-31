@@ -6,7 +6,6 @@ import HeaderAccount from "../../components/account/headerAccount";
 import {ListItemSeparator} from "../../components/lists";
 import Icon from "../../components/common/Icon";
 import AccountListItem from "../../components/account/accountListItem";
-import routes from "../../routes/navigation/routes";
 import {Button} from "react-native-elements";
 import tw from "tailwind-react-native-classnames";
 import {openInBrowser} from "../../utils/share";
@@ -30,19 +29,22 @@ const Profile = ({navigation}) => {
         {
             title: "Inbox",
             icon: "email",
-            targetScreen: routes.MESSAGES,
+
         }, {
             title: "Account Settings",
             icon: "account",
-            targetScreen: routes.MESSAGES,
         }, {
             title: "Rate us",
             icon: "thumb-up",
-            targetScreen: routes.MESSAGES,
+            action: () => {
+
+            }
         }, {
             title: "Help",
             icon: "help",
-            targetScreen: routes.MESSAGES,
+            action: () => {
+
+            }
         }
     ];
     return (
@@ -58,7 +60,11 @@ const Profile = ({navigation}) => {
                         <AccountListItem
                             label={item.title}
                             icon={item.icon}
-                            onPress={() => navigation.navigate(item.targetScreen)}
+                            onPress={() => {
+                                if (item.action) {
+                                    item.action();
+                                }
+                            }}
                         />
                     )}
                 />

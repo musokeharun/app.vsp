@@ -15,17 +15,20 @@ const App = () => {
     const handleLoadAssets = async () => {
         // assets preloading
         await Promise.all([...imageAssets, ...fontAssets])
-    }
+    };
 
     // rendering
     if (!didLoad)
-        return (<AppLoading startAsync={handleLoadAssets} onFinish={() => setDidLoad(true)}
-                            onError={console.warn}/>);
+        return (
+            <AppLoading
+                startAsync={handleLoadAssets}
+                onFinish={() => setDidLoad(true)}
+                onError={console.warn}/>);
     return (
         <Provider store={store}>
             <Router/>
         </Provider>
     )
-}
+};
 
 export default App

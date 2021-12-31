@@ -21,7 +21,7 @@ const AuthNavigator = () => (
         <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="Register" component={RegisterScreen}/>
         <Stack.Screen name="CategorySelect" component={CategorySelectorScreen}/>
-        <Stack.Screen name={"ConfirmAccount"} component={ConfirmAccountScreen} />
+        <Stack.Screen name={"ConfirmAccount"} component={ConfirmAccountScreen}/>
     </Stack.Navigator>
 );
 

@@ -1,35 +1,41 @@
-/* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 
-// ------------------------------------
-// Constants
-// ------------------------------------
+
+const loginAuth = createAsyncThunk(
+    "app/login",
+    (form) => {
+
+    }
+);
 
 const initialState = {
-  checked: false,
-  loggedIn: false,
-  me: {},
-}
+    checked: false,
+    loggedIn: false,
+    me: {},
+    assets: {
+        AuthBg: {uri: "https://wallpaperaccess.com/full/833312.png"}
 
+    }
+};
 // ------------------------------------
 // Slice
 // ------------------------------------
-
 const appSlice = createSlice({
-  name: 'app',
-  initialState,
-  reducers: {
-    authenticate: (state, { payload }) => {
-      state.loggedIn = payload.loggedIn
-      state.checked = payload.checked
+    name: 'app',
+    initialState,
+    reducers: {
+        authenticate: (state, {payload}) => {
+            state.loggedIn = payload.loggedIn;
+            state.checked = payload.checked
+        },
+        saveMe: (state, {payload}) => {
+            state.me = payload.me
+        },
+        assets: {}
     },
-    saveMe: (state, { payload }) => {
-      state.me = payload.me
-    },
-  },
 })
 
-export const { action } = appSlice
-export const { authenticate, saveMe } = appSlice.actions
+export const {authenticate, saveMe, assets} = appSlice.actions;
+export const selectAssets = state => state.app.assets;
 
 export default appSlice.reducer

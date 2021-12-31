@@ -5,7 +5,7 @@ import HeaderTitleText from "../../routes/navigation/stacks/HeaderTitleText";
 import {SearchBar, Text} from "react-native-elements";
 import {ScrollView} from "react-native";
 import SearchCard from "../../components/Cards/SearchCard";
-import PlaceholderScreen from "../../components/all/PlaceholderScreen";
+import PlaceholderScreen from "../../components/common/PlaceholderScreen";
 
 const SearchScreen = () => {
         const [query, setQuery] = useState("");

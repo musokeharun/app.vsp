@@ -1,6 +1,5 @@
 import jwtDecode from "jwt-decode";
 
-import AuthContext from "./context";
 import authStorage from "./storage";
 
 const user = {};
